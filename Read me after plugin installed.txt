@@ -1,0 +1,39 @@
+/*
+ * ADSAFE
+ * Created Date: 18/10/2018
+ * @package    : local_adsafe
+ 
+ * @copyright  : 2018 Pukunui
+ 
+ * @author     : Ken Chang, Pukunui {@link http://pukunui.com}
+ 
+ * @license    : http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @Ticket     : MIE-782993
+ */
+This plugin developement is for this ticket MIE-782993 (Adsafe)
+
+/*When you have installed this plugin to our clients, please make sure follow all the steps below.*/
+
+1. Redirect new user to our screen, like a hook form redirection.
+   Login to your cpanel, and go to > public_html > login > confirm.php
+   Search the line "echo $OUTPUT->single_button(core_login_get_return_url(), get_string('continue'));" and put double slash to disable this line.
+   And insert another new line below the disabled line, "echo $OUTPUT->single_button(new moodle_url('/local/adsafe/churchoreventlist.php'), get_string('continue'));"
+   Then save changes.
+
+2. (I am using my path as an example) In the path /public_html/local/adsafe, you can see there are three PNG image file.
+   image_dash_gray.png, image_question_red.png, image_tick_green.png
+   Please copy those file and paste them into the moodle icon path /public_html/pix.
+   Otherwise the plugin can't read picture file and will display red error-cross picture.
+
+3. Then go to > public_html > login > signup_form.php
+   Insert the css code above "<?php" to the signup form to hide 2 fields (City/town and Country) for customisation.
+   <style type="text/css">
+
+   
+#fitem_id_city {display: none;}
+
+   #fitem_id_country {display: none;}
+
+   </style>
+  
+   
